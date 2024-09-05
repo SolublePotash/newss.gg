@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(
   '/',
   createProxyMiddleware({
-    target: 'https://mathsspot.com',
+    target: 'https://discord.com',
     changeOrigin: true,
     ws: true,
     secure: false,
