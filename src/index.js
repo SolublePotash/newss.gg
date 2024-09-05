@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(
   '/',
   createProxyMiddleware({
-    target: 'https://discord.com',
+    target: 'https://discord.com/login',
     changeOrigin: true,
     ws: true,
     secure: false,
