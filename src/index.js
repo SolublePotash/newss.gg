@@ -1,6 +1,5 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const url = require('url');
 
 const app = express();
 
@@ -12,34 +11,21 @@ app.use((req, res, next) => {
   next();
 });
 
-// Dynamic proxy middleware
-app.use('/proxy', (req, res, next) => {
-  const targetUrl = req.query.url;
-
-  if (!targetUrl) {
-    res.status(400).send('No target URL provided');
-    return;
-  }
-
-  const parsedUrl = url.parse(targetUrl);
-
+// Proxy setup
+app.use(
+  '/',
   createProxyMiddleware({
-    target: `${parsedUrl.protocol}//${parsedUrl.host}`,
+    target: 'https://mathsspot.com',
     changeOrigin: true,
-    pathRewrite: {
-      '^/proxy': '', // Remove /proxy from the path
-    },
-    onProxyReq: (proxyReq, req, res) => {
-      proxyReq.setHeader('Host', parsedUrl.host); // Set host header for proxied request
-    },
+    ws: true,
+    secure: false,
     onProxyRes: (proxyRes) => {
       proxyRes.headers['X-Frame-Options'] = 'ALLOWALL';
-    },
-    logLevel: 'debug', // For logging
-  })(req, res, next);
-});
+    }
+  })
+);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Dynamic proxy server is running on port ${PORT}`);
+  console.log(`Proxy server is running on port ${PORT}`);
 });
