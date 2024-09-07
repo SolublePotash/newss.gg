@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(
   '/',
   createProxyMiddleware({
-    target: 'https://holyubofficial.net',
+    target: 'https://bing.com',
     changeOrigin: true,
     ws: true,
     secure: false,
