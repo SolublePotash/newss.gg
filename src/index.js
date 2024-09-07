@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(
   '/',
   createProxyMiddleware({
-    target: 'https://holyubofficial.net/hub/?v=s7h6ic9ljdh',
+    target: 'https://holyubofficial.net',
     changeOrigin: true,
     ws: true,
     secure: false,
