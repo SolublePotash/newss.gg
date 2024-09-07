@@ -1,1 +1,13 @@
-{}
+{
+  "name": "vercel-proxy",
+  "version": "1.0.0",
+  "description": "A proxy server for mathsspot.com using http-proxy-middleware",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
+  }
+}
