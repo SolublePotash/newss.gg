@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(
   '/',
   createProxyMiddleware({
-    target: 'https://bing.com',
+    target: 'https://now.gg',
     changeOrigin: true,
     ws: true,
     secure: false,
