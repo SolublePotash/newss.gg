@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(
   '/',
   createProxyMiddleware({
-    target: 'https://now.gg',
+    target: 'https://now.gg/apps/a/10020/b.html',
     changeOrigin: true,
     ws: true,
     secure: false,
